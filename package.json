@@ -1,0 +1,42 @@
+{
+  "name": "v452",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.9.1",
+    "autoprefixer": "^10.4.20",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.0.0",
+    "date-fns": "4.1.0",
+    "deepgram": "^1.0.3",
+    "framer-motion": "11.0.7",
+    "googleapis": "^133.0.0",
+    "lucide-react": "^0.454.0",
+    "next": "14.2.16",
+    "next-themes": "0.2.0",
+    "nodemailer": "^6.9.8",
+    "openai": "^4.41.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.54.1",
+    "recharts": "2.15.0",
+    "tailwind-merge": "^1.14.0",
+    "tailwindcss-animate": "^1.0.7",
+    "twilio": "^4.16.0",
+    "zod": "3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.32",
+    "@types/react": "^18.2.74",
+    "@types/react-dom": "^18.2.17",
+    "postcss": "^8.5.0",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.5.0"
+  }
+}
