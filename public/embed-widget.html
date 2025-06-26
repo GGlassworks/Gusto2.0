@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glaze Glassworks Chat Widget - Embed Code</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .code-block {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        .step {
+            background: #e7f3ff;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 Glaze Glassworks Chat Widget - Squarespace Integration</h1>
+    
+    <div class="highlight">
+        <strong>📋 Quick Setup Instructions:</strong><br>
+        Copy the code below and paste it into your Squarespace website's footer or custom code injection area.
+    </div>
+
+    <div class="step">
+        <h3>Step 1: Add this script to your Squarespace site</h3>
+        <p>Go to <strong>Settings → Advanced → Code Injection</strong> and paste this in the <strong>Footer</strong> section:</p>
+    </div>
+
+    <div class="code-block">
+&lt;!-- Glaze Glassworks Chat Widget --&gt;
+&lt;div id="glaze-chat-widget"&gt;&lt;/div&gt;
+&lt;script&gt;
+(function() {
+    // Create and inject the chat widget
+    const widgetContainer = document.getElementById('glaze-chat-widget');
+    
+    // Widget HTML structure
+    const widgetHTML = `
+        &lt;div id="glaze-widget-root" style="position: fixed; bottom: 24px; right: 24px; z-index: 9999;"&gt;
+            &lt;!-- Chat Button --&gt;
+            &lt;button id="glaze-chat-btn" style="
+                width: 64px; 
+                height: 64px; 
+                border-radius: 50%; 
+                background: linear-gradient(135deg, #3b82f6, #8b5cf6); 
+                border: 4px solid rgba(255,255,255,0.2); 
+                box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); 
+                cursor: pointer; 
+                display: flex; 
+                align-items: center; 
+                justify-content: center;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(8px);
+            "&gt;
+                &lt;svg width="28" height="28" fill="white" viewBox="0 0 24 24"&gt;
+                    &lt;path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/&gt;
+                &lt;/svg&gt;
+            &lt;/button&gt;
+            
+            &lt;!-- Chat Widget (hidden by default) --&gt;
+            &lt;div id="glaze-chat-popup" style="
+                position: absolute; 
+                bottom: 80px; 
+                right: 0; 
+                width: 384px; 
+                height: 600px; 
+                background: rgba(255,255,255,0.95); 
+                backdrop-filter: blur(16px); 
+                border-radius: 16px; 
+                box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); 
+                display: none; 
+                flex-direction: column;
+                overflow: hidden;
+                border: 1px solid rgba(255,255,255,0.2);
+            "&gt;
+                &lt;!-- Header --&gt;
+                &lt;div style="
+                    background: linear-gradient(135deg, #475569, #1e293b); 
+                    color: white; 
+                    padding: 16px; 
+                    display: flex; 
+                    align-items: center; 
+                    justify-content: space-between;
+                "&gt;
+                    &lt;div style="display: flex; align-items: center; gap: 12px;"&gt;
+                        &lt;img src="YOUR_DEPLOYED_URL/glaze-logo.png" alt="Glaze Glassworks" style="width: 40px; height: 40px; object-fit: contain;"&gt;
+                        &lt;div&gt;
+                            &lt;h3 style="margin: 0; font-size: 18px; font-weight: bold;"&gt;Glaze Glassworks&lt;/h3&gt;
+                            &lt;div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;"&gt;
+                                &lt;div style="width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite;"&gt;&lt;/div&gt;
+                                &lt;p style="margin: 0; font-size: 14px; color: #cbd5e1;"&gt;Chat with Gusto&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;button id="glaze-close-btn" style="
+                        background: none; 
+                        border: none; 
+                        color: white; 
+                        cursor: pointer; 
+                        padding: 8px; 
+                        border-radius: 4px;
+                        transition: background 0.2s;
+                    " onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='none'"&gt;
+                        &lt;svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"&gt;
+                            &lt;path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/&gt;
+                        &lt;/svg&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- Chat Content --&gt;
+                &lt;div style="flex: 1; padding: 16px; overflow-y: auto; background: linear-gradient(to bottom, #f8fafc, white);"&gt;
+                    &lt;div style="
+                        background: linear-gradient(135deg, #3b82f6, #8b5cf6); 
+                        color: white; 
+                        padding: 16px; 
+                        border-radius: 16px; 
+                        margin-bottom: 16px; 
+                        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+                    "&gt;
+                        &lt;p style="margin: 0; font-size: 14px; line-height: 1.5;"&gt;
+                            Hi there! 👋 I'm Gusto, your glass guide at Glaze Glassworks! Whether you're looking for shower enclosures, custom mirrors, smart glass, or any glass installation - I'm here to help gather your details and get you connected with our expert team. Ready to get started?
+                        &lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;div style="text-align: center; margin-top: 20px;"&gt;
+                        &lt;button onclick="window.open('YOUR_DEPLOYED_URL', '_blank')" style="
+                            background: linear-gradient(135deg, #3b82f6, #8b5cf6); 
+                            color: white; 
+                            border: none; 
+                            padding: 12px 24px; 
+                            border-radius: 8px; 
+                            cursor: pointer; 
+                            font-size: 16px; 
+                            font-weight: 600;
+                            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+                            transition: all 0.2s;
+                        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 12px -1px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.1)'"&gt;
+                            Start Chat →
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    `;
+    
+    widgetContainer.innerHTML = widgetHTML;
+    
+    // Add event listeners
+    const chatBtn = document.getElementById('glaze-chat-btn');
+    const chatPopup = document.getElementById('glaze-chat-popup');
+    const closeBtn = document.getElementById('glaze-close-btn');
+    
+    chatBtn.addEventListener('click', function() {
+        chatPopup.style.display = chatPopup.style.display === 'none' ? 'flex' : 'none';
+    });
+    
+    closeBtn.addEventListener('click', function() {
+        chatPopup.style.display = 'none';
+    });
+    
+    // Add hover effects
+    chatBtn.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.1)';
+        this.style.boxShadow = '0 32px 64px -12px rgba(0,0,0,0.35)';
+    });
+    
+    chatBtn.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+        this.style.boxShadow = '0 25px 50px -12px rgba(0,0,0,0.25)';
+    });
+    
+    // Add pulse animation CSS
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    `;
+    document.head.appendChild(style);
+})();
+&lt;/script&gt;
+    </div>
+
+    <div class="step">
+        <h3>Step 2: Update the URLs</h3>
+        <p>Replace <code>YOUR_DEPLOYED_URL</code> with your actual Vercel deployment URL (e.g., <code>https://your-app.vercel.app</code>)</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 3: Test the Widget</h3>
+        <p>Save your changes and visit your Squarespace site. You should see the chat button in the bottom right corner!</p>
+    </div>
+
+    <div class="highlight">
+        <strong>🎨 Customization Options:</strong><br>
+        • Change colors by modifying the gradient values<br>
+        • Adjust positioning by changing bottom/right values<br>
+        • Resize the widget by modifying width/height<br>
+        • Add your own branding elements
+    </div>
+
+    <h3>📱 Mobile Responsive</h3>
+    <p>The widget automatically adapts to mobile devices and won't interfere with your site's functionality.</p>
+
+    <h3>🔒 Privacy & Security</h3>
+    <p>All chat data is securely processed and submitted directly to your Pipedrive CRM system.</p>
+
+</body>
+</html>

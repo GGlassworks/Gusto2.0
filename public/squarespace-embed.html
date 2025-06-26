@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glaze Glassworks Chat Widget - Squarespace Embed</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .code-block {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        .step {
+            background: #e7f3ff;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 Glaze Glassworks Chat Widget - Squarespace Integration</h1>
+    
+    <div class="highlight">
+        <strong>✅ FIXED: Now includes full interactive chat with 5-second delay!</strong><br>
+        This embed code will load the complete chat widget as an iframe.
+    </div>
+
+    <div class="step">
+        <h3>Step 1: Deploy to Vercel First</h3>
+        <p>1. Click the "Deploy" button in v0 to deploy your chat widget</p>
+        <p>2. Copy your Vercel deployment URL (e.g., https://your-app.vercel.app)</p>
+        <p>3. Replace <code>YOUR_DEPLOYED_URL</code> in the code below</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 2: Add to Squarespace</h3>
+        <p>Go to <strong>Settings → Advanced → Code Injection</strong> and paste this in the <strong>Footer</strong>:</p>
+    </div>
+
+    <div class="code-block">
+&lt;!-- Glaze Glassworks Interactive Chat Widget --&gt;
+&lt;div id="glaze-chat-container"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+(function() {
+    console.log('🚀 Loading Glaze Glassworks Chat Widget...');
+    
+    // Create iframe container
+    const container = document.getElementById('glaze-chat-container');
+    
+    // Create iframe for the full interactive chat
+    const iframe = document.createElement('iframe');
+    iframe.src = 'YOUR_DEPLOYED_URL'; // Replace with your Vercel URL
+    iframe.style.cssText = `
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        border: none !important;
+        pointer-events: none !important;
+        z-index: 2147483647 !important;
+        background: transparent !important;
+    `;
+    iframe.id = 'glaze-chat-iframe';
+    iframe.title = 'Glaze Glassworks Chat Widget';
+    
+    // Allow pointer events only on the chat widget area
+    iframe.onload = function() {
+        console.log('✅ Chat widget loaded successfully');
+        // Enable interactions in the bottom-right area where the widget appears
+        iframe.style.pointerEvents = 'auto';
+        iframe.style.clipPath = 'polygon(70% 70%, 100% 70%, 100% 100%, 70% 100%)';
+    };
+    
+    container.appendChild(iframe);
+    
+    // Add some safety checks
+    window.addEventListener('message', function(event) {
+        // Handle any messages from the chat widget if needed
+        if (event.origin === 'YOUR_DEPLOYED_URL') { // Replace with your domain
+            console.log('📨 Message from chat widget:', event.data);
+        }
+    });
+    
+    console.log('✅ Chat widget iframe created and loaded');
+})();
+&lt;/script&gt;
+
+&lt;style&gt;
+/* Ensure the chat widget doesn't interfere with your site */
+#glaze-chat-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2147483647;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    #glaze-chat-iframe {
+        clip-path: polygon(60% 60%, 100% 60%, 100% 100%, 60% 100%) !important;
+    }
+}
+&lt;/style&gt;
+    </div>
+
+    <div class="step">
+        <h3>Step 3: Replace YOUR_DEPLOYED_URL</h3>
+        <p><strong>IMPORTANT:</strong> Replace both instances of <code>YOUR_DEPLOYED_URL</code> with your actual Vercel deployment URL</p>
+        <p>Example: <code>https://glaze-chat-widget.vercel.app</code></p>
+    </div>
+
+    <div class="step">
+        <h3>Step 4: Test the Widget</h3>
+        <p>✅ Widget appears after 5-second delay</p>
+        <p>✅ Shows helpful tooltip</p>
+        <p>✅ Full interactive chat functionality</p>
+        <p>✅ Submits to your Pipedrive CRM</p>
+        <p>✅ Mobile responsive</p>
+    </div>
+
+    <div class="highlight">
+        <strong>🎯 How it works:</strong><br>
+        • Widget loads as an invisible iframe overlay<br>
+        • Only the bottom-right corner is interactive<br>
+        • Doesn't interfere with your main website<br>
+        • 5-second delay before appearing<br>
+        • Full chat functionality with voice and CRM integration
+    </div>
+
+    <h3>🔧 Troubleshooting</h3>
+    <ul>
+        <li><strong>Widget not appearing:</strong> Check that you replaced YOUR_DEPLOYED_URL correctly</li>
+        <li><strong>Not working on mobile:</strong> The widget automatically adapts to mobile screens</li>
+        <li><strong>Interfering with site:</strong> The iframe is clipped to only the bottom-right area</li>
+        <li><strong>Console errors:</strong> Check browser console for any CORS or loading issues</li>
+    </ul>
+
+    <h3>🎨 Customization</h3>
+    <p>To customize the widget appearance, modify the colors and styling in your deployed Next.js app, then redeploy.</p>
+
+</body>
+</html>

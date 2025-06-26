@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Custom Glassmorphic Utility --- */
+.glassmorphic {
+  background: linear-gradient(120deg, rgba(255,255,255,0.16) 0%, rgba(0,80,200,0.10) 100%) !important;
+  border: 1.5px solid rgba(255,255,255,0.16);
+  backdrop-filter: blur(32px) saturate(140%);
+  -webkit-backdrop-filter: blur(32px) saturate(140%);
+}
+
+/* --- Custom Chat Scrollbar Styling --- */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0,80,200,0.12);
+  border-radius: 6px;
+}
+
+/* --- Chat Bubble Fade-in Animation --- */
+.animate-fade-in {
+  animation: fadeIn .45s cubic-bezier(.21,1.02,.73,1) both;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px);}
+  to   { opacity: 1; transform: none;}
+}
+
+/* --- Your base CSS from above --- */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+h1 {
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.chatbot {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.message {
+  margin: 10px 0;
+}
+
+.user-message {
+  text-align: right;
+  color: #007bff;
+}
+
+.bot-message {
+  text-align: left;
+  color: #28a745;
+}
