@@ -1,0 +1,115 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id            String         @id @default(cuid())
+  firstName     String
+  lastName      String
+  email         String?        @unique
+  phone         String?        @unique
+  address       String?
+  pipedriveId   String?        @unique
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  conversations Conversation[]
+  warranties    Warranty[]
+  
+  @@index([email, phone])
+}
+
+model Conversation {
+  id              String    @id @default(cuid())
+  customerId      String?
+  customer        Customer? @relation(fields: [customerId], references: [id])
+  channel         Channel
+  status          ConversationStatus @default(ACTIVE)
+  language        String    @default("en")
+  startedAt       DateTime  @default(now())
+  endedAt         DateTime?
+  summary         String?
+  sentiment       Float?    // -1 to 1
+  salesOrderId    String?
+  pipedriveLeadId String?
+  messages        Message[]
+  metadata        Json?
+  
+  @@index([customerId, status])
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+  role           MessageRole
+  content        String
+  audioUrl       String?
+  transcription  Json?        // Store full transcription metadata
+  timestamp      DateTime     @default(now())
+  metadata       Json?
+  
+  @@index([conversationId, timestamp])
+}
+
+model Warranty {
+  id           String   @id @default(cuid())
+  customerId   String
+  customer     Customer @relation(fields: [customerId], references: [id])
+  productType  String
+  purchaseDate DateTime
+  expiryDate   DateTime
+  status       WarrantyStatus @default(ACTIVE)
+  claimHistory Json[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  
+  @@index([customerId, status])
+}
+
+model KnowledgeAccess {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  role        UserRole
+  permissions String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum Channel {
+  WEB_CHAT
+  PHONE
+  SMS
+  EMAIL
+}
+
+enum ConversationStatus {
+  ACTIVE
+  COMPLETED
+  ABANDONED
+  TRANSFERRED
+}
+
+enum MessageRole {
+  USER
+  ASSISTANT
+  SYSTEM
+}
+
+enum WarrantyStatus {
+  ACTIVE
+  EXPIRED
+  CLAIMED
+  VOID
+}
+
+enum UserRole {
+  OWNER
+  EMPLOYEE
+  CUSTOMER
+}
